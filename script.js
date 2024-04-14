@@ -2,6 +2,7 @@
 /*jslint es6*/
 const input = document.getElementById("search-input");
 const inputBtn = document.getElementById("search-button");
+const picture = document.getElementById("picture");
 const pokemonName = document.getElementById("pokemon-name");
 const pokemonId = document.getElementById("pokemon-id");
 const pokemonWeight = document.getElementById("weight");
@@ -48,6 +49,11 @@ const addInfo = (pokemon) => {
     "speed",
     stats[5].base_stat
   );
+  picture.innerHTML = "";
+  const image = document.createElement("img");
+  image.alt = "pokemon image";
+  image.src = sprites.front_default;
+  picture.appendChild(image);
   pokemonName.innerHTML = "name " + name;
   pokemonId.innerHTML = "id " + id;
   pokemonWeight.innerHTML = "weight " + weight;
