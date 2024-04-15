@@ -17,15 +17,16 @@ const speed = document.getElementById("speed");
 
 const pokeApi = "https://pokeapi-proxy.freecodecamp.rocks/api/pokemon";
 
-const getPokemon = async () => {
-  console.log(input.value);
+const getPokemon = async (pokemon) => {
+  console.log(pokemon);
   try {
-    const res = await fetch(pokeApi + "/" + input.value);
+    const res = await fetch(pokeApi + "/" + pokemon);
     const whosThatPokemon = await res.json();
     //console.log(whosThatPokemon, "who");
     addInfo(whosThatPokemon);
   } catch (err) {
     console.error(err);
+    alert("Pokémon not found");
   }
 };
 
@@ -53,19 +54,44 @@ const addInfo = (pokemon) => {
   const image = document.createElement("img");
   image.alt = "pokemon image";
   image.src = sprites.front_default;
+  image.id = "sprite";
   picture.appendChild(image);
-  pokemonName.innerHTML = "name " + name;
-  pokemonId.innerHTML = "id " + id;
-  pokemonWeight.innerHTML = "weight " + weight;
-  pokemonHeight.innerHTML = "height " + height;
+  pokemonName.innerHTML = name.toUpperCase();
+  pokemonId.innerHTML = "#" + id;
+  pokemonWeight.innerHTML = weight;
+  pokemonHeight.innerHTML = height;
+
+  //const type = document.createElement("div");
+
   pokemonTypes.innerHTML =
     "types " + types.reduce((acc, val) => acc + " " + val.type.name, "");
-  hp.innerHTML = "hp " + stats[0].base_stat;
-  attack.innerHTML = "attack " + stats[1].base_stat;
-  defense.innerHTML = "defense " + stats[2].base_stat;
-  spAttack.innerHTML = "sp attack " + stats[3].base_stat;
-  spDefense.innerHTML = "sp defense " + stats[4].base_stat;
-  speed.innerHTML = "speed " + stats[5].base_stat;
+  hp.innerHTML = stats[0].base_stat;
+  attack.innerHTML = stats[1].base_stat;
+  defense.innerHTML = stats[2].base_stat;
+  spAttack.innerHTML = stats[3].base_stat;
+  spDefense.innerHTML = stats[4].base_stat;
+  speed.innerHTML = stats[5].base_stat;
 };
 
-inputBtn.addEventListener("click", getPokemon);
+const pokemonIdAndNameCheck = () => {
+  console.log("nan?", Number.isNaN(+input.value), typeof input, input.value);
+  if (Number.isNaN(+input.value)) {
+    console.log();
+    //Note: Pokémon names should be in lowercase
+    const lowercasePokemon = input.value.toLowerCase();
+    //have special characters removed
+    //and be dash separated
+    lowercasePokemon.replace(/♀/, "-f");
+    lowercasePokemon.replace(/♂/, "-m");
+    lowercasePokemon.replaceAll(/\W/g, "-");
+    //Also, if the Pokémon has either ♀ or ♂ as part of its name
+    //the format is {name-f} or {name-m}, respectively
+    console.log("lowercase", lowercasePokemon);
+    getPokemon(lowercasePokemon);
+  } else {
+    //look for id #
+    getPokemon(input.value);
+  }
+};
+
+inputBtn.addEventListener("click", pokemonIdAndNameCheck);
