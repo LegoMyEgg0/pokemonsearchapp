@@ -52,7 +52,7 @@ const addInfo = (pokemon) => {
   // );
   picture.innerHTML = "";
   const image = document.createElement("img");
-  image.alt = "pokemon image";
+  image.alt = `Pokémon ${name}`;
   image.src = sprites.front_default;
   image.id = "sprite";
   picture.appendChild(image);
@@ -62,7 +62,8 @@ const addInfo = (pokemon) => {
   pokemonHeight.innerHTML = height;
   pokemonTypes.innerHTML = "";
   pokemonTypes.innerHTML = types.reduce(
-    (acc, val) => acc + `<div class="${val.type.name}">${val.type.name}</div>`,
+    (acc, val) =>
+      acc + `<div class="${val.type.name} type">${val.type.name}</div>`,
     ``
   );
   hp.innerHTML = stats[0].base_stat;
@@ -71,6 +72,7 @@ const addInfo = (pokemon) => {
   spAttack.innerHTML = stats[3].base_stat;
   spDefense.innerHTML = stats[4].base_stat;
   speed.innerHTML = stats[5].base_stat;
+  input.value = "";
 };
 
 const pokemonIdAndNameCheck = () => {
@@ -95,3 +97,8 @@ const pokemonIdAndNameCheck = () => {
 };
 
 inputBtn.addEventListener("click", pokemonIdAndNameCheck);
+input.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    pokemonIdAndNameCheck();
+  }
+});

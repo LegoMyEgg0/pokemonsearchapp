@@ -6,7 +6,7 @@
 
 body {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,10 +15,10 @@ body {
 
 .search-container {
   width: 50%;
-  height: 50%;
   background-color: blue;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 
@@ -27,10 +27,124 @@ body {
   width: 96px;
 }
 
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .stats {
   height: 20px;
   width: 50%;
   background-color: green;
   border: 2px solid black;
   margin: 10px;
+}
+.name.id {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.height.weight {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.hp.speed {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.attack.defense {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.special-attack.special-defense {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#types {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.type {
+  margin: 0px 5px;
+}
+
+.grass {
+  background-color: green;
+}
+
+.poison {
+  background-color: purple;
+}
+
+.fire {
+  background-color: orange;
+}
+
+.flying {
+  background-color: lightblue;
+}
+
+.water {
+  background-color: blue;
+}
+
+.bug {
+  background-color: greenyellow;
+}
+
+.normal {
+  background-color: beige;
+}
+
+.electric {
+  background-color: yellow;
+  color: black;
+}
+
+.ice {
+  background-color: aqua;
+}
+
+.fighting {
+  background-color: red;
+}
+
+.ground {
+  background-color: brown;
+}
+
+.psychic {
+  background-color: pink;
+}
+
+.rock {
+  background-color: grey;
+}
+
+.ghost {
+  background-color: white;
+  color: black;
+}
+
+.dragon {
+  background-color: orangered;
+}
+
+.dark {
+  background-color: black;
+  color: white;
+}
+
+.steel {
+  background-color: steelblue;
+}
+
+.fairy {
+  background-color: palevioletred;
 }
