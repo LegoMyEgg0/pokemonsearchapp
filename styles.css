@@ -10,12 +10,33 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
+  /* background: linear-gradient(0deg, green 50%, lightblue, blue); */
+  background: radial-gradient(
+    ellipse at bottom,
+    green 50%,
+    lightblue 55%,
+    blue
+  );
+  /* position: relative; */
+}
+
+#sun {
+  height: 70px;
+  width: 70px;
+  /* background-color: orange; */
+  background-image: radial-gradient(yellow, orangered);
+  /* border: solid orangered; */
+  box-shadow: 0px 0px 10px 10px orangered;
+  border-radius: 50%;
+  position: absolute;
+  left: 50px;
+  /* right: 1px; */
+  top: 50px;
 }
 
 .search-container {
   width: 50%;
-  background-color: blue;
+  background-color: red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,7 +56,6 @@ body {
 
 .stats {
   height: 20px;
-  width: 50%;
   background-color: green;
   border: 2px solid black;
   margin: 10px;
