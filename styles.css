@@ -11,10 +11,11 @@ body {
   justify-content: center;
   align-items: center;
   /* background: linear-gradient(0deg, green 50%, lightblue, blue); */
+  /*  maybe try ellipse for a better curve  */
   background: radial-gradient(
     ellipse at bottom,
-    green 50%,
-    lightblue 55%,
+    green 70%,
+    lightblue 75%,
     blue
   );
   /* position: relative; */
@@ -43,9 +44,62 @@ body {
   flex-direction: column;
 }
 
+.screen-bezel-top {
+  background: lightgrey;
+  padding: 20px 20px 0px;
+  border-left: 5px outset grey;
+  border-top: 5px outset grey;
+  border-right: 5px outset grey;
+}
+
 .picture {
-  height: 96px;
-  width: 96px;
+  height: 150px;
+  width: 200px;
+  background: white;
+  border-radius: 20%;
+  border: 5px inset grey;
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  max-height: 100%;
+  min-height: 100%;
+  /* min-width: 100%; */
+  max-width: 100%;
+}
+
+.screen-bezel-bottom {
+  height: 50px;
+  width: 100%;
+  background: lightgrey; /*      LL        UR       LR */
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 20% 100%);
+  border-bottom: 5px outset grey;
+  border-right: 5px outset grey;
+  position: relative;
+}
+
+.bottom-bezel-light {
+  height: 20px;
+  width: 20px;
+  background: blue;
+  border-radius: 50%;
+  position: absolute;
+  left: 40px;
+  top: 10px;
+}
+
+.vent-container {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+}
+
+.vent {
+  height: 4px;
+  width: 50px;
+  margin: 2px;
+  background: black;
 }
 
 .stats-container {
